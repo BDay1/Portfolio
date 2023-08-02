@@ -1,30 +1,40 @@
 const {
+  createUser,
+  getUser,
+  getUserByUsername,
+  getUserById,  
   createProject,
-  createArt,
-  deleteProject,
-  deleteArt,
+  getProjectById,
   getAllProjects,
-  getAllArt,
+  updateProject,
+  destroyProject,
+  createArt,
+  getArtById,
+  getAllArts,
+  updateArt,
+  destroyArt
   } = require('./index.js');
   const 
     client
-   = require('./client');
+   = require('./client.js');
    const bcrypt = require('bcrypt');
 
 
    /*******DROP TABLES ********/
    const dropTables = async () => {
-    try{
-        await client.query(`
-        DROP IF TABLE EXISTS art;
-        DROP IF TABLE EXISTS projects;
-        DROP IF TABLE EXISTS users;
-        `);
-    } catch (error){
-        console.error("Well, that didnt work...")
-        throw error;
+    try {
+      await client.query(`
+        DROP TABLE IF EXISTS art;
+        DROP TABLE IF EXISTS projects;
+        DROP TABLE IF EXISTS users;
+      `);
+      console.log('Tables dropped successfully');
+    } catch (error) {
+      console.error('Error dropping tables!', error);
+      throw error;
     }
-   }
+  };
+  
 
    /*******CREATE TABLES ********/
 
@@ -86,7 +96,7 @@ async function createInitialProjects(){
       )
         console.log("Projects Created:", projects)
       
-        console.log("Arojects have been created!")
+        console.log("Projects have been created!")
       }
 
       /******* CREATE ART ********/
@@ -107,7 +117,7 @@ async function createInitialArt(){
         console.log("Arts have been created!")
       }
       
-      const rebuildDB = async () => {
+const rebuildDB = async () => {
         try {
           await dropTables();
           await createTables();
@@ -134,7 +144,13 @@ const testDB = async () => {
     try {
       console.log("Testing, Testing 1,2...?")
   
-  
+//       console.log("Calling getUser");
+//  const gotuser = await getUser({username: 'admin', password: 'onlyAdmin'})
+// console.log("getUser Result:", gotuser)
+
+// console.log("Calling getUserById with 1");
+//  const admin = await getUserById(1);
+//  console.log("getUserById Result:", admin);
      
     } catch (error) {
       console.error("It broke....no work...test fail");

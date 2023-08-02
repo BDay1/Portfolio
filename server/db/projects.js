@@ -4,7 +4,7 @@ async function createProject({ title, description, imageUrl }) {
     try {
       const { rows: [ project ] } = await client.query(`
         INSERT INTO projects( title, description, imageUrl)
-        VALUES ($1, $2, $3, )
+        VALUES ($1, $2, $3)
         RETURNING *;
       `, [ title, description, imageUrl]);
   
