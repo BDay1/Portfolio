@@ -16,6 +16,8 @@ const {
    const dropTables = async () => {
     try{
         await client.query(`
+        DROP IF TABLE EXISTS art;
+        DROP IF TABLE EXISTS projects;
         DROP IF TABLE EXISTS users;
         `);
     } catch (error){
@@ -74,13 +76,13 @@ async function createInitialProjects(){
 
     const projectsToCreate = [
       {
-        title: "",
-        description: "" ,
+        title: "Friendship Gaming",
+        description: "Mock ecommerce website displaying video games" ,
         imageUrl: "" ,
       }
     ]
     const projects = await Promise.all(
-        projectsToCreate.map((project) => createGame(project))
+        projectsToCreate.map((project) => createProject(project))
       )
         console.log("Projects Created:", projects)
       
@@ -90,7 +92,7 @@ async function createInitialProjects(){
       /******* CREATE ART ********/
 async function createInitialArt(){
 
-    const projectsToCreate = [
+    const artToCreate = [
       {
         title: "",
         description: "" ,
@@ -98,7 +100,7 @@ async function createInitialArt(){
       }
     ]
     const arts = await Promise.all(
-        projectsToCreate.map((art) => createGame(art))
+        artToCreate.map((art) => createArt(art))
       )
         console.log("Arts Created:", arts)
       
