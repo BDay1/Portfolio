@@ -4,7 +4,7 @@ async function createArt({ title, description, imageUrl }) {
     try {
       const { rows: [ art ] } = await client.query(`
         INSERT INTO arts( title, description, imageUrl)
-        VALUES ($1, $2, $3, )
+        VALUES ($1, $2, $3)
         RETURNING *;
       `, [ title, description, imageUrl]);
   
