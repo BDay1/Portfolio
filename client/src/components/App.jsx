@@ -1,6 +1,3 @@
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Bigelow+Rules&display=swap');
-</style>
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import ReactDOM from "react-dom";
@@ -98,7 +95,8 @@ function App() {
         setCurrentUser={setCurrentUser}
         setToken={setToken}
          />
-         <div>
+         
+         <div className="welcomeText">
           <h1>Welcome!</h1>
           <p>My name is Brooke Day, I am a recent graduate from Fullstack Academy's Web Development Boot camp! Through a rigorous 3 month course I learned many skills both technical skills and practical skills. I am also a digital artist. I use my art to create products for my Etsy shop and freelance pieces such as customized wall art, stickers or digital downloads to use as they please. This site is a display of my coding abilities and a showcase for my art! I hope you enjoy!
           </p>
@@ -127,12 +125,7 @@ function App() {
         </Routes>  */}
           {/* <Footer/> */}
         
-        <div className="App">
-          <div>
-            
-            
-          </div>
-        </div>
+        
         </>
       )
     }
